@@ -66,9 +66,12 @@
 
 •	Сама библиотека: Python, Flask или Django
 
+
 •	База данных: MongoDB или PostgreSQL либо хранение в видео объекта.
 
+
 •	Голосовой помощник: библиотека SpeechRecognition, либо Sphinx.
+
 
 •	Система рекомендаций: Языковая модель GPT либо TensorFlow или PyTorch.
 
