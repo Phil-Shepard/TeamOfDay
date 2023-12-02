@@ -1,6 +1,44 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
+import tkinter as tk
+
+
+def search_books():
+    query = entry.get().lower()  # Получаем текст из поля ввода и приводим к нижнему регистру
+
+    result_text.delete('1.0', tk.END)  # Очищаем текстовое поле для вывода результатов
+
+    with open('books.txt', 'r', encoding='utf-8') as file:
+        for line in file:
+            if line.lower().startswith(query):  # Проверяем, начинается ли строка с введенных символов
+                result_text.insert(tk.END, line)  # Выводим
+
+
+def create_search_window():
+    search_window = tk.Tk()
+    search_window.title("Поиск книг")
+
+    # Поле для ввода запроса
+    global entry
+    entry = tk.Entry(search_window, font=("Arial", 14))
+    entry.pack(padx=20, pady=10)
+
+    # Кнопка для запуска поиска
+    search_button = tk.Button(search_window, text="Искать", command=search_books, font=("Arial", 14))
+    search_button.pack(padx=20, pady=10)
+
+    # Текстовое поле для вывода результатов
+    global result_text
+    result_text = tk.Text(search_window, font=("Arial", 12), height=10, width=50)
+    result_text.pack(padx=20, pady=10)
+
+    search_window.mainloop()
+
+
+# Вызываем функцию для создания окна с поиском книг
+
+
 
 def open_reader():
     reader_window = tk.Toplevel()
@@ -30,12 +68,7 @@ def open_achievements():
     label.pack(padx=50, pady=100)
 
 def open_your_library():
-    reader_window = tk.Toplevel()
-    reader_window.title("Библиотека")
-    reader_window.geometry("1920x1080")
-
-    label = tk.Label(reader_window, text="Ваши книги:", font=("Arial", 24))
-    label.pack(padx=50, pady=100)
+    create_search_window()
 
 def main():
     root = tk.Tk()
