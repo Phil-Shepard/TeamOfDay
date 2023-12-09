@@ -7,12 +7,13 @@ import tkinter as tk
 def search_books():
     query = entry.get().lower()  # Получаем текст из поля ввода и приводим к нижнему регистру
 
-    result_text.delete('1.0', tk.END)  # Очищаем текстовое поле для вывода результатов
+    if query:  # Проверяем, есть ли текст в поле запроса
+        result_text.delete('1.0', tk.END)  # Очищаем текстовое поле для вывода результатов
 
-    with open('books.txt', 'r', encoding='utf-8') as file:
-        for line in file:
-            if line.lower().startswith(query):  # Проверяем, начинается ли строка с введенных символов
-                result_text.insert(tk.END, line)  # Выводим
+        with open('books.txt', 'r', encoding='utf-8') as file:
+            for line in file:
+                if line.lower().startswith(query):  # Проверяем, начинается ли строка с введенных символов
+                    result_text.insert(tk.END, line)  # Выводим
 
 
 def create_search_window():
@@ -55,6 +56,7 @@ def open_recommendations():
     reader_window = tk.Toplevel()
     reader_window.title("Рекомендации")
     reader_window.geometry("1920x1080")
+    reader_window.state('zoomed')
 
     label = tk.Label(reader_window, text="Рекомендации", font=("Arial", 24))
     label.pack(padx=50, pady=100)
@@ -63,6 +65,7 @@ def open_achievements():
     reader_window = tk.Toplevel()
     reader_window.title("Достижения")
     reader_window.geometry("1920x1080")
+    reader_window.state('zoomed')
 
     label = tk.Label(reader_window, text="Ваши достижения:", font=("Arial", 24))
     label.pack(padx=50, pady=100)
@@ -70,47 +73,56 @@ def open_achievements():
 def open_your_library():
     create_search_window()
 
-def main():
+def run_layout():
     root = tk.Tk()
     root.title("Моя библиотека")
-    root.geometry("1920x1080")
+    root.geometry("1024x768")
+    root.state('zoomed')
 
     # Запрещаем автоматическое растягивание основного окна
     root.pack_propagate(False)
 
     # Создаем фон
-    background_image = Image.open("background_image.jpg")
+    background_image = Image.open("backgrond2.png")
     background_image = background_image.resize((1920, 1080), Image.ANTIALIAS)
     background_photo = ImageTk.PhotoImage(background_image)
     background_label = tk.Label(root, image=background_photo)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-    # Полоска сверху
-    top_strip = tk.Label(root, text="TeamOfDay", font=("Arial", 36, "bold"), bg="gray", fg="white", pady=20)
-    top_strip.pack(fill="x")
+    # Создаем изображение
+    image = Image.open("LibraryIcon.png")
+    image = image.resize((140, 140), Image.ANTIALIAS)  # Измените размер изображения на нужный
+    photo = ImageTk.PhotoImage(image)
 
-    # Создаем фрейм для размещения кнопок
-    button_frame = tk.Frame(root, bg="white")
-    button_frame.pack(side="left", fill="y")
+    # Создаем виджет-кнопку поверх изображения
+    invisible_button = tk.Button(root, command=create_search_window, bd=0, relief="flat", highlightthickness=0)
+    invisible_button.place(x=150, y=79)  # Укажите координаты для размещения кнопки
+    invisible_button.config(image=photo, width=140, height=140)
 
-    # Создаем кнопки и помещаем их во фрейм
-    reader_button = tk.Button(button_frame, text="Читалка", command=open_reader, bg="lightblue", fg="black", font=("Arial", 24))
-    reader_button.pack(fill="x", padx=20, pady=10)
+    # Создаем изображение
+    image1 = Image.open("AchiveIcon.png")
+    image1 = image1.resize((140, 140), Image.ANTIALIAS)  # Измените размер изображения на нужный
+    photo1 = ImageTk.PhotoImage(image1)
 
-    # book_card_button = tk.Button(button_frame, text="Карточка книги", command=open_book_card, bg="lightgreen", fg="black", font=("Arial", 24))
-    # book_card_button.pack(fill="x", padx=20, pady=10)
+    # Создаем виджет-кнопку поверх изображения
+    invisible_button1 = tk.Button(root, command=open_achievements, bd=0, relief="flat", highlightthickness=0)
+    invisible_button1.place(x=150, y=505.5)  # Укажите координаты для размещения кнопки
+    invisible_button1.config(image=photo1, width=140, height=140)
 
-    recommendations_button = tk.Button(button_frame, text="Рекомендации", command=open_recommendations, bg="lightyellow", fg="black", font=("Arial", 24))
-    recommendations_button.pack(fill="x", padx=20, pady=10)
+    # Создаем изображение
+    image2 = Image.open("RecIcon.png")
+    image2 = image2.resize((140, 140), Image.ANTIALIAS)  # Измените размер изображения на нужный
+    photo2 = ImageTk.PhotoImage(image2)
 
-    achievements_button = tk.Button(button_frame, text="Достижения", command=open_achievements, bg="lightcoral", fg="black", font=("Arial", 24))
-    achievements_button.pack(fill="x", padx=20, pady=10)
-
-    your_library_button = tk.Button(button_frame, text="Ваша библиотека", command=open_your_library, bg="lightpink", fg="black", font=("Arial", 24))
-    your_library_button.pack(fill="x", padx=20, pady=10)
+    # Создаем виджет-кнопку поверх изображения
+    invisible_button2 = tk.Button(root, command=open_recommendations, bd=0, relief="flat", highlightthickness=0)
+    invisible_button2.place(x=150, y=300)  # Укажите координаты для размещения кнопки
+    invisible_button2.config(image=photo2, width=140, height=140)
 
     root.mainloop()
 
+def main():
+    run_layout()
+
 if __name__ == "__main__":
     main()
-
