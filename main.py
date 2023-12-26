@@ -3,7 +3,8 @@ from tkinter import ttk
 import Book
 
 Library = [Book.Book('0NchAwAAQBAJ'),Book.Book('fIyWTKDlMnAC'),Book.Book('86xhAwAAQBAJ'),
-           Book.Book('0NchAwAAQBAJ'),Book.Book('fIyWTKDlMnAC'),Book.Book('86xhAwAAQBAJ')]
+           Book.Book('0NchAwAAQBAJ'),Book.Book('fIyWTKDlMnAC'),Book.Book('86xhAwAAQBAJ'),
+           Book.Book('0NchAwAAQBAJ'),Book.Book('fIyWTKDlMnAC'),Book.Book('86xhAwAAQBAJ'),]
 
 root = Tk()
 root.title("LibNote: твоя электронная библиотека")
