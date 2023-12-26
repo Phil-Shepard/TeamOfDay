@@ -1,9 +1,9 @@
 import requests
-
 API_KEY = 'AIzaSyAJ1j8sZsZS0ZE5JmrLIh1naLYgRMv7dgQ'
 class Book:
     all_info = None
-
+    status = 'WillRead'
+    mark = '-'
     def __init__(self,id):
         self.id = id
         self.all_info = requests.get(f'https://www.googleapis.com/books/v1/volumes/{self.id}?=key{API_KEY}')
