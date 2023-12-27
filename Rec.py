@@ -1,12 +1,10 @@
 import requests
 import random
-import Book
-
 
 def Recomendations(Lib):
     if len(Lib) == 0:
         return None
-    category = random.choice(list(set(i.get_categories() for i in Lib)))
+    category = random.choice(list(set(i.categories for i in Lib)))
     index = random.randint(0,requests.get(f"https://www.googleapis.com/books/v1/volumes?q=subject:{category}"
                                           f"&key={API_KEY}").json()['totalItems'])
     return requests.get(f"https://www.googleapis.com/books/v1/volumes?q=subject:{category}"

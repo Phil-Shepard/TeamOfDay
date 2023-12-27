@@ -1,21 +1,28 @@
 import tkinter as tk
+from tkinter import ttk
 
 root = tk.Tk()
+container = ttk.Frame(root)
+canvas = tk.Canvas(container)
+scrollbar = ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
+scrollable_frame = ttk.Frame(canvas)
 
-# Create a canvas
-canvas = tk.Canvas(root, height=200, width=300, background="lightblue")
-canvas.pack()
+scrollable_frame.bind(
+    "<Configure>",
+    lambda e: canvas.configure(
+        scrollregion=canvas.bbox("all")
+    )
+)
 
-# Create a frame
-scrollbar = tk.Scrollbar(canvas, orient="vertical",command=canvas.yview)
+canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+canvas.configure(yscrollcommand=scrollbar.set)
+
+for i in range(50):
+    ttk.Label(scrollable_frame, text="Sample scrolling label").pack()
+
+container.pack()
+canvas.pack(side="left", fill="both", expand=True)
 scrollbar.pack(side="right", fill="y")
-
-# Add the frame to the canvas
-canvas.create_window(50, 50, anchor="nw")
-
-# Add a button to the frame
-button = tk.Listbox(canvas)
-button.insert(tk.END, "я качусь по миру со мной два чемодана")
-button.pack(padx=20, pady=20)
 
 root.mainloop()
