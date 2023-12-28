@@ -2,6 +2,25 @@ import random
 from tkinter import *
 from tkinter import ttk
 import Book
+from Achievements import Achivement
+
+achivements_list = [
+    "Новичок-читатель",
+    "Отзывчивый пользователь",
+    "Коллекционер идей",
+    "Книжный дневник",
+    "Читательская разносторонность",
+    "Многосторонний читатель",
+    "Рецензент с опытом",
+    "Литературный диверсант",
+    "Читательский гид",
+    "Коллекционер мнений",
+    "Энциклопедия мировой литературы",
+    "Авторитетный критик",
+    "Чтец-коллекционер",
+    "Литературный путешественник",
+    "Эксперт-читатель"
+]
 
 root = Tk()
 root.title("LibNote: твоя электронная библиотека")
@@ -19,7 +38,8 @@ voice_button_img = PhotoImage(file="LibNote вёрстка/Плашка меню
 menu_logo = PhotoImage(file="LibNote вёрстка/Лого меню.png")
 my_library_bg_img = PhotoImage(file="LibNote вёрстка/Моя библиотека/Доп фон моя библиотека.png")
 recomendation_bg_img = PhotoImage(file="LibNote вёрстка/Рекомендации/Фон рекомендации.png")
-book_maket = PhotoImage(file="LibNote вёрстка/Моя библиотека/Карточка книги шаблон.png")
+book_maket = PhotoImage(file="LibNote вёрстка/Карточка книги шаблон.png")
+achivement_bg_img = PhotoImage(file="LibNote вёрстка/Group 52.png")
 #endregion
 
 background = ttk.Label(image=background_img)
@@ -46,6 +66,7 @@ def show_frame(frame):
     my_library_frame.place_forget()
     recomendation_frame.place_forget()
     book_frame.place_forget()
+    achivement_frame.place_forget()
     frame.place(x=328, y=47)
 
 def makeFrameBook(book):
@@ -131,7 +152,8 @@ Button(menu_frame,image=recomendation_button_img,border=0,
        command=lambda: show_frame(recomendation_frame)).place(x=133,y=293)
 
 Button(menu_frame,image=achivement_button_img,border=0,
-       bg="#C4AF72",activebackground="#C4AF72").place(x=133,y=466)
+       bg="#C4AF72",activebackground="#C4AF72",
+       command=lambda: show_frame(achivement_frame)).place(x=133,y=466)
 
 Button(menu_frame,image=voice_button_img,border=0,
        bg="#C4AF72",activebackground="#C4AF72").place(x=128,y=644)
@@ -223,6 +245,7 @@ else:
         truncated_text = f"{index}. {book.title[:27]}..." if len(book.title) > 27 else f"{index}. {book.title}"
         ML_WasRead_list.insert(END, truncated_text.ljust(45))
 
+
 scrollbar_WasRead = Scrollbar(my_library_frame,orient="vertical")
 scrollbar_WasRead.config(command=lambda *args: (ML_WasRead_list.yview(*args), ML_WasRead_Mark_list.yview(*args)))
 
@@ -240,6 +263,17 @@ ML_WasRead_Mark_list.bind("<MouseWheel>", on_mousewheel)
 
 recomendation_frame = Frame(width=696,height=675,border=0)
 ttk.Label(recomendation_frame, image=recomendation_bg_img,background='#DFD0B0').place(x=0, y=0)
+
+achivement_frame = Frame(width=696,height=675,border=0)
+ttk.Label(achivement_frame, image=achivement_bg_img,background='#DFD0B0').place(x=0, y=0)
+
+# Создание экземпляра класса Achivement
+achivements = Achivement(*achivements_list)
+
+# Отображение списка достижений на achivement_frame
+for index, achievement_text in enumerate(achivements_list, start=1):
+    label = Label(achivement_frame, text=f"{index}. {achievement_text}", font=("Montserrat", 16), bg="#DFD0B0", fg="#46402F")
+    label.pack()
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
