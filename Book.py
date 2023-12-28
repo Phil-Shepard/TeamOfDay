@@ -1,6 +1,6 @@
 import requests
-from tkinter import *
-from tkinter import ttk
+from PIL import Image, ImageTk
+from io import BytesIO
 
 
 API_KEY = 'AIzaSyAJ1j8sZsZS0ZE5JmrLIh1naLYgRMv7dgQ'
@@ -23,4 +23,8 @@ class Book:
         self.pageCount = self.all_info['volumeInfo'].get("pageCount",'Нет информации')
         self.publishedDate = self.all_info['volumeInfo'].get("publishedDate",'Нет информации')
         self.description = self.all_info['volumeInfo'].get("description",'Нет информации')
-        self.icon = self.all_info['volumeInfo']['imageLinks'].get("medium")
+
+        response = requests.get(self.all_info['volumeInfo']['imageLinks'].get("thumbnail"))
+        image_data = BytesIO(response.content)
+        image = Image.open(image_data).resize((184,274))
+        self.icon = ImageTk.PhotoImage(image)
