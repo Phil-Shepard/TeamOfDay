@@ -2,24 +2,18 @@ import random
 from tkinter import *
 from tkinter import ttk
 import Book
-from Achievements import Achivement
 
 achivements_list = [
-    "Новичок-читатель",
-    "Отзывчивый пользователь",
-    "Коллекционер идей",
-    "Книжный дневник",
-    "Читательская разносторонность",
-    "Многосторонний читатель",
-    "Рецензент с опытом",
-    "Литературный диверсант",
-    "Читательский гид",
-    "Коллекционер мнений",
-    "Энциклопедия мировой литературы",
-    "Авторитетный критик",
-    "Чтец-коллекционер",
-    "Литературный путешественник",
-    "Эксперт-читатель"
+    "Первооткрываетель: Запустите приложение в первый раз",
+    "Новичок-читатель: Прочитайте первую книгу",
+    "Большие планы: Добавьте первую кнгиу в запланированное",
+    "Частый гость: Запустите приложение 20 раз",
+    "Читатель-любитель: Прочитайте 10 книг",
+    "Цезарь: Читайте одновременно 9 книг",
+    "Как к себе домой: Запустите приложение 50 раз",
+    "Книжный червь: Полностью прочитайте 20 книг",
+    "Далёкие мечты: Добавьте 20 книг в запланированное",
+    "Чтец-коллекционер: Соберите коллекцию из 50 книг"
 ]
 
 root = Tk()
@@ -39,7 +33,18 @@ menu_logo = PhotoImage(file="LibNote вёрстка/Лого меню.png")
 my_library_bg_img = PhotoImage(file="LibNote вёрстка/Моя библиотека/Доп фон моя библиотека.png")
 recomendation_bg_img = PhotoImage(file="LibNote вёрстка/Рекомендации/Фон рекомендации.png")
 book_maket = PhotoImage(file="LibNote вёрстка/Карточка книги шаблон.png")
-achivement_bg_img = PhotoImage(file="LibNote вёрстка/Group 52.png")
+achivement_bg_img = PhotoImage(file="LibNote вёрстка/Достижения/Фон достижения.png")
+achivement_icon_test = PhotoImage(file="LibNote вёрстка/Достижения/иконка достижения тест.png")
+bronz_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая ракета.png")
+argentum_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная ракета.png")
+gold_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Золотая ракета.png")
+bronz_book = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая книга.png")
+argentum_book = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная книга.png")
+gold_book = PhotoImage(file="LibNote вёрстка/Достижения/Золотая книга.png")
+bronz_star = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая звезда.png")
+argentum_star = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная звезда.png")
+gold_star = PhotoImage(file="LibNote вёрстка/Достижения/Золотая звезда.png")
+achivement_final = PhotoImage(file="LibNote вёрстка/Достижения/Финальная награда.png")
 #endregion
 
 background = ttk.Label(image=background_img)
@@ -267,13 +272,35 @@ ttk.Label(recomendation_frame, image=recomendation_bg_img,background='#DFD0B0').
 achivement_frame = Frame(width=696,height=675,border=0)
 ttk.Label(achivement_frame, image=achivement_bg_img,background='#DFD0B0').place(x=0, y=0)
 
-# Создание экземпляра класса Achivement
-achivements = Achivement(*achivements_list)
+ttk.Label(achivement_frame, image=bronz_rocket,background='#C59E53').place(x=70, y=5)
+ttk.Label(achivement_frame, text=achivements_list[0],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=20)
 
-# Отображение списка достижений на achivement_frame
-for index, achievement_text in enumerate(achivements_list, start=1):
-    label = Label(achivement_frame, text=f"{index}. {achievement_text}", font=("Montserrat", 16), bg="#DFD0B0", fg="#46402F")
-    label.pack()
+ttk.Label(achivement_frame, image=bronz_book,background='#C59E53').place(x=70, y=70)
+ttk.Label(achivement_frame, text=achivements_list[1],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=85)
+
+ttk.Label(achivement_frame, image=bronz_star,background='#C59E53').place(x=70, y=140)
+ttk.Label(achivement_frame, text=achivements_list[2],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=155)
+
+ttk.Label(achivement_frame, image=argentum_rocket,background='#C59E53').place(x=70, y=205)
+ttk.Label(achivement_frame, text=achivements_list[3],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=220)
+
+ttk.Label(achivement_frame, image=argentum_book,background='#C59E53').place(x=70, y=275)
+ttk.Label(achivement_frame, text=achivements_list[4],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=290)
+
+ttk.Label(achivement_frame, image=argentum_star,background='#C59E53').place(x=70, y=345)
+ttk.Label(achivement_frame, text=achivements_list[5],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=360)
+
+ttk.Label(achivement_frame, image=gold_rocket,background='#C59E53').place(x=70, y=410)
+ttk.Label(achivement_frame, text=achivements_list[6],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=425)
+
+ttk.Label(achivement_frame, image=gold_book,background='#C59E53').place(x=70, y=480)
+ttk.Label(achivement_frame, text=achivements_list[7],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=495)
+
+ttk.Label(achivement_frame, image=gold_star,background='#C59E53').place(x=70, y=550)
+ttk.Label(achivement_frame, text=achivements_list[8],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=565)
+
+ttk.Label(achivement_frame, image=achivement_final,background='#C59E53').place(x=70, y=615)
+ttk.Label(achivement_frame, text=achivements_list[9],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=630)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
