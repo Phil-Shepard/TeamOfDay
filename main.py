@@ -1,4 +1,3 @@
-import random
 from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import Combobox
@@ -106,6 +105,7 @@ def show_frame(frame):
     book_frame.place_forget()
     addBook_Frame.place_forget()
     voice_frame.place_forget()
+    achivement_frame.place_forget()
     frame.place(x=328, y=47)
 
 
@@ -343,7 +343,9 @@ Button(menu_frame, image=recomendation_button_img, border=0,
        command=lambda: show_frame(recomendation_frame)).place(x=133, y=293)
 
 Button(menu_frame, image=achivement_button_img, border=0,
-       bg="#C4AF72", activebackground="#C4AF72").place(x=133, y=466)
+       bg="#C4AF72", activebackground="#C4AF72",
+       command=lambda: show_frame(achivement_frame)).place(x=133,y=466)
+
 
 Button(menu_frame, image=voice_button_img, border=0,
        bg="#C4AF72", activebackground="#C4AF72").place(x=128, y=644)
