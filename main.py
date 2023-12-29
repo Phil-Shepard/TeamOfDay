@@ -35,17 +35,29 @@ recomendation_bg_img = PhotoImage(file="LibNote вёрстка/Рекоменд�
 book_maket = PhotoImage(file="LibNote вёрстка/Карточка книги шаблон.png")
 achivement_bg_img = PhotoImage(file="LibNote вёрстка/Достижения/Фон достижения.png")
 achivement_icon_test = PhotoImage(file="LibNote вёрстка/Достижения/иконка достижения тест.png")
-bronz_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая ракета.png")
-argentum_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная ракета.png")
-gold_rocket = PhotoImage(file="LibNote вёрстка/Достижения/Золотая ракета.png")
-bronz_book = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая книга.png")
-argentum_book = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная книга.png")
-gold_book = PhotoImage(file="LibNote вёрстка/Достижения/Золотая книга.png")
-bronz_star = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая звезда.png")
-argentum_star = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная звезда.png")
-gold_star = PhotoImage(file="LibNote вёрстка/Достижения/Золотая звезда.png")
-achivement_final = PhotoImage(file="LibNote вёрстка/Достижения/Финальная награда.png")
-crown = PhotoImage(file="LibNote вёрстка/Достижения/Корона.png")
+bronz_rocket_locked = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая ракета.png")
+argentum_rocket_locked = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная ракета.png")
+gold_rocket_locked = PhotoImage(file="LibNote вёрстка/Достижения/Золотая ракета.png")
+bronz_book_locked = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая книга.png")
+argentum_book_locked = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная книга.png")
+gold_book_locked = PhotoImage(file="LibNote вёрстка/Достижения/Золотая книга.png")
+bronz_star_locked = PhotoImage(file="LibNote вёрстка/Достижения/Бронзовая звезда.png")
+argentum_star_locked = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная звезда.png")
+gold_star_locked = PhotoImage(file="LibNote вёрстка/Достижения/Золотая звезда.png")
+achivement_final_locked = PhotoImage(file="LibNote вёрстка/Достижения/Финальная награда.png")
+crown_locked = PhotoImage(file="LibNote вёрстка/Достижения/Корона.png")
+
+bronz_rocket_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная бронз ракета.png")
+argentum_rocket_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная серебр ракета.png")
+gold_rocket_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная золотая ракета.png")
+bronz_book_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная бронзовая книга.png")
+argentum_book_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная серебр книга.png")
+gold_book_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная золотая книга.png")
+bronz_star_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная бронз звезда.png")
+argentum_star_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная серебр звезда.png")
+gold_star_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная золотая звезда.png")
+achivement_final_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная финальная награда.png")
+crown_unlocked = PhotoImage(file="LibNote вёрстка/Достижения/Разблокированная корона.png")
 #endregion
 
 background = ttk.Label(image=background_img)
@@ -270,38 +282,111 @@ ML_WasRead_Mark_list.bind("<MouseWheel>", on_mousewheel)
 recomendation_frame = Frame(width=696,height=675,border=0)
 ttk.Label(recomendation_frame, image=recomendation_bg_img,background='#DFD0B0').place(x=0, y=0)
 
+locked_achivement = "#866F41"
+unlocked_achivement = "#46402F"
+
 achivement_frame = Frame(width=696,height=675,border=0)
 ttk.Label(achivement_frame, image=achivement_bg_img,background='#DFD0B0').place(x=0, y=0)
 
-ttk.Label(achivement_frame, image=bronz_rocket,background='#C59E53').place(x=70, y=5)
-ttk.Label(achivement_frame, text=achivements_list[0],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=20)
+def first_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=5)
+    ttk.Label(achivement_frame, text=achivements_list[0],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=20)
 
-ttk.Label(achivement_frame, image=bronz_book,background='#C59E53').place(x=70, y=70)
-ttk.Label(achivement_frame, text=achivements_list[1],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=85)
+def second_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=70)
+    ttk.Label(achivement_frame, text=achivements_list[1],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=85)
 
-ttk.Label(achivement_frame, image=bronz_star,background='#C59E53').place(x=70, y=140)
-ttk.Label(achivement_frame, text=achivements_list[2],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=155)
+def third_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=140)
+    ttk.Label(achivement_frame, text=achivements_list[2],
+              font=("Montserrat Medium", 15), foreground=color_text, background='#C59E53').place(x=136, y=155)
 
-ttk.Label(achivement_frame, image=argentum_rocket,background='#C59E53').place(x=70, y=205)
-ttk.Label(achivement_frame, text=achivements_list[3],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=220)
+def fourth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=205)
+    ttk.Label(achivement_frame, text=achivements_list[3],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=220)
 
-ttk.Label(achivement_frame, image=argentum_book,background='#C59E53').place(x=70, y=275)
-ttk.Label(achivement_frame, text=achivements_list[4],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=290)
+def fifth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=275)
+    ttk.Label(achivement_frame, text=achivements_list[4],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=290)
 
-ttk.Label(achivement_frame, image=crown,background='#C59E53').place(x=70, y=345)
-ttk.Label(achivement_frame, text=achivements_list[5],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=360)
+def sixth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=345)
+    ttk.Label(achivement_frame, text=achivements_list[5],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=360)
 
-ttk.Label(achivement_frame, image=gold_rocket,background='#C59E53').place(x=70, y=410)
-ttk.Label(achivement_frame, text=achivements_list[6],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=425)
+def seventh_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=410)
+    ttk.Label(achivement_frame, text=achivements_list[6],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=425)
 
-ttk.Label(achivement_frame, image=gold_book,background='#C59E53').place(x=70, y=480)
-ttk.Label(achivement_frame, text=achivements_list[7],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=495)
+def eighth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=480)
+    ttk.Label(achivement_frame, text=achivements_list[7],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=495)
 
-ttk.Label(achivement_frame, image=gold_star,background='#C59E53').place(x=70, y=550)
-ttk.Label(achivement_frame, text=achivements_list[8],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=565)
+def nineth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=550)
+    ttk.Label(achivement_frame, text=achivements_list[8],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=565)
 
-ttk.Label(achivement_frame, image=achivement_final,background='#C59E53').place(x=70, y=615)
-ttk.Label(achivement_frame, text=achivements_list[9],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=630)
+def tenth_achievement(image, color_text):
+    ttk.Label(achivement_frame, image=image,background='#C59E53').place(x=70, y=615)
+    ttk.Label(achivement_frame, text=achivements_list[9],font=("Montserrat Medium", 15),
+              foreground=color_text, background='#C59E53').place(x=136, y=630)
+
+if int(countOfLaunches) >= 1:
+    first_achievement(bronz_rocket_unlocked, unlocked_achivement)
+else:
+    first_achievement(bronz_rocket_locked, locked_achivement)
+
+if len(LibraryWasRead) > 0:
+    second_achievement(bronz_book_unlocked, unlocked_achivement)
+else:
+    second_achievement(bronz_book_locked, locked_achivement)
+
+if len(LibraryWillRead) > 0:
+    third_achievement(bronz_star_unlocked, unlocked_achivement)
+else:
+    third_achievement(bronz_star_locked, locked_achivement)
+
+if int(countOfLaunches) >= 20:
+    fourth_achievement(argentum_rocket_unlocked, unlocked_achivement)
+else:
+    fourth_achievement(argentum_rocket_locked, locked_achivement)
+
+if len(LibraryWasRead) >= 10:
+    fifth_achievement(argentum_book_unlocked, unlocked_achivement)
+else:
+    fifth_achievement(argentum_book_locked, locked_achivement)
+
+if len(LibraryNowRead) >= 9:
+    sixth_achievement(crown_unlocked, unlocked_achivement)
+else:
+    sixth_achievement(crown_locked, locked_achivement)
+
+if int(countOfLaunches) >= 50:
+    seventh_achievement(gold_rocket_unlocked, unlocked_achivement)
+else:
+    seventh_achievement(gold_rocket_locked, locked_achivement)
+
+if len(LibraryWasRead) >= 20:
+    eighth_achievement(gold_book_unlocked, unlocked_achivement)
+else:
+    eighth_achievement(gold_book_locked, locked_achivement)
+
+if len(LibraryWillRead) >= 20:
+    nineth_achievement(gold_star_unlocked, unlocked_achivement)
+else:
+    nineth_achievement(gold_star_locked, locked_achivement)
+
+if len(LibraryWillRead) + len(LibraryNowRead) + len(LibraryWasRead) >= 50:
+    tenth_achievement(achivement_final_unlocked, unlocked_achivement)
+else:
+    tenth_achievement(achivement_final_locked, locked_achivement)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
