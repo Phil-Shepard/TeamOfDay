@@ -45,6 +45,7 @@ bronz_star = PhotoImage(file="LibNote вёрстка/Достижения/Бро
 argentum_star = PhotoImage(file="LibNote вёрстка/Достижения/Серебряная звезда.png")
 gold_star = PhotoImage(file="LibNote вёрстка/Достижения/Золотая звезда.png")
 achivement_final = PhotoImage(file="LibNote вёрстка/Достижения/Финальная награда.png")
+crown = PhotoImage(file="LibNote вёрстка/Достижения/Корона.png")
 #endregion
 
 background = ttk.Label(image=background_img)
@@ -287,7 +288,7 @@ ttk.Label(achivement_frame, text=achivements_list[3],font=("Montserrat Medium", 
 ttk.Label(achivement_frame, image=argentum_book,background='#C59E53').place(x=70, y=275)
 ttk.Label(achivement_frame, text=achivements_list[4],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=290)
 
-ttk.Label(achivement_frame, image=argentum_star,background='#C59E53').place(x=70, y=345)
+ttk.Label(achivement_frame, image=crown,background='#C59E53').place(x=70, y=345)
 ttk.Label(achivement_frame, text=achivements_list[5],font=("Montserrat Medium", 15), foreground="#46402F", background='#C59E53').place(x=136, y=360)
 
 ttk.Label(achivement_frame, image=gold_rocket,background='#C59E53').place(x=70, y=410)
