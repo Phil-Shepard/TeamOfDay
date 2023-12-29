@@ -24,7 +24,8 @@ class Book:
         self.publishedDate = self.all_info['volumeInfo'].get("publishedDate",'Нет информации')
         self.description = self.all_info['volumeInfo'].get("description",'Нет информации')
 
-        response = requests.get(self.all_info['volumeInfo']['imageLinks'].get("thumbnail"))
-        image_data = BytesIO(response.content)
-        image = Image.open(image_data).resize((184,274))
-        self.icon = ImageTk.PhotoImage(image)
+        response = requests.get(self.all_info['volumeInfo']['imageLinks'].get("thumbnail",None))
+        if response != None:
+            image_data = BytesIO(response.content)
+            image = Image.open(image_data).resize((184,274))
+            self.icon = ImageTk.PhotoImage(image)
